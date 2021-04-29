@@ -165,7 +165,7 @@ ax2.set_xlabel("Degradation", fontsize=label_size)
 ax3.set_xlabel("Degradation", fontsize=label_size)
 ax4.set_xlabel("Degradation", fontsize=label_size)
 
-ax2.legend([plot_drift,plot_nondrift],[r"$s^{drift}$",r"$s^{\bot{drift}}$"],
+ax2.legend([plot_drift,plot_nondrift],[r"$s^{shift}$",r"$s^{\bot{shift}}$"],
            loc='center left',
            bbox_to_anchor=(1, 0.5),
            fontsize=title_size

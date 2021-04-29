@@ -502,7 +502,9 @@ aggregate_perf_df(df_perf, perf_key = "gmean-sser", csv_folder=publication_folde
 aggregate_perf_df(df_perf, perf_key = "mcc", csv_folder=publication_folder)
 aggregate_perf_df(df_perf, perf_key = "pearson", csv_folder=publication_folder)
 
-#=========HIEQ RESULTS=====================
+#=========SEQI RESULTS=====================
+# Note: hieq (Health Indicator Explanation Quality, HIEQ) has been renamed
+# to sensor explanation quality index (SEQI)
 df_perf = load_bae_results(filename=main_filename)
 uid_columns = [col for col in df_perf.columns if col not in ["perf_score","perf_name"]]
 
@@ -520,31 +522,31 @@ for i, uid in enumerate(df_perf_uid["uid"].unique()):
     temp_df_sser = temp_df[(temp_df["perf_name"] == "gmean-sser")]["perf_score"].values[0]
 
     # compute
-    hieq_score = (temp_df_sdc+temp_df_sser)/2
+    seqi_score = (temp_df_sdc+temp_df_sser)/2
 
     # create new row
-    hieq_df_temp = temp_df[(temp_df["perf_name"] == "gmean-sdc")].copy()
-    hieq_df_temp["perf_name"] = "hieq"
-    hieq_df_temp["perf_score"] = hieq_score
+    seqi_df_temp = temp_df[(temp_df["perf_name"] == "gmean-sdc")].copy()
+    seqi_df_temp["perf_name"] = "hieq"
+    seqi_df_temp["perf_score"] = seqi_score
 
     if i == 0 :
-        hieq_df = hieq_df_temp
+        seqi_df = seqi_df_temp
     else:
-        hieq_df = hieq_df.append(hieq_df_temp)
-hieq_df = hieq_df.reset_index(drop=True)
+        seqi_df = seqi_df.append(seqi_df_temp)
+seqi_df = seqi_df.reset_index(drop=True)
 
 # convert into cd diagram
 perf_key = "hieq"
-df_perf_cd_hieq = prepare_cd_diagram(filename = hieq_df,
+df_perf_cd_seqi = prepare_cd_diagram(filename = seqi_df,
                              perf_key = perf_key)
-df_perf_cd_hieq = replace_full_name_df(df_perf_cd_hieq)
-df_perf_cd_hieq.columns = ["classifier_name","dataset_name","accuracy"]
-fig = draw_cd_diagram(df_perf=df_perf_cd_hieq, labels=True)
+df_perf_cd_seqi = replace_full_name_df(df_perf_cd_seqi)
+df_perf_cd_seqi.columns = ["classifier_name","dataset_name","accuracy"]
+fig = draw_cd_diagram(df_perf=df_perf_cd_seqi, labels=True)
 fig.tight_layout()
 fig.savefig(publication_folder + "cd-" + perf_key + ".png", dpi=dpi,bbox_inches='tight')
 
 # print table
-agg_hieq_df = aggregate_perf_df(hieq_df, perf_key = "hieq", csv_folder=publication_folder)
+agg_seqi_df = aggregate_perf_df(seqi_df, perf_key = "hieq", csv_folder=publication_folder)
 
 
 
