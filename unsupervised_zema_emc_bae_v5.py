@@ -12,21 +12,23 @@ from matplotlib.cm import ScalarMappable
 from mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from scipy.stats import spearmanr, pearsonr
 
-from agentMET4FOF.agentMET4FOF.agents import AgentNetwork, MonitorAgent, AgentMET4FOF, Coalition
-from agentMET4FOF_ml_extension.bae_agents import CBAE_Agent
-from agentMET4FOF_ml_extension.datastream_agents import ZEMA_DatastreamAgent, PRONOSTIA_DatastreamAgent
-from agentMET4FOF_ml_extension.ml_agents import ML_TransformAgent, ML_PlottingAgent, ML_EvaluateAgent, \
+from agentMET4FOF_ml_extension.agentMET4FOF.agentMET4FOF.agents import AgentNetwork, MonitorAgent, AgentMET4FOF, Coalition
+from agentMET4FOF_ml_extension.agentMET4FOF_ml_extension.bae_agents import CBAE_Agent
+from agentMET4FOF_ml_extension.agentMET4FOF_ml_extension.datastream_agents import ZEMA_DatastreamAgent, PRONOSTIA_DatastreamAgent
+from agentMET4FOF_ml_extension.agentMET4FOF_ml_extension.ml_agents import ML_TransformAgent, ML_PlottingAgent, ML_EvaluateAgent, \
     ML_AggregatorAgent, ML_BaseAgent
-from agentMET4FOF_ml_extension.ml_experiment import ML_ExperimentLite
-from agentMET4FOF_ml_extension.util.calc_drift_rank import calc_gmean_sser, calc_sser_mcc
-from agentMET4FOF_ml_extension.util.fft_sensor import FFT_Sensor
-from agentMET4FOF_ml_extension.util.helper import move_axis, flatten_dict
-from baetorch.baetorch.util.minmax import MultiMinMaxScaler
+from agentMET4FOF_ml_extension.agentMET4FOF_ml_extension.ml_experiment import ML_ExperimentLite
+from agentMET4FOF_ml_extension.agentMET4FOF_ml_extension.util.calc_drift_rank import calc_gmean_sser, calc_sser_mcc
+from agentMET4FOF_ml_extension.agentMET4FOF_ml_extension.util.fft_sensor import FFT_Sensor
+from agentMET4FOF_ml_extension.agentMET4FOF_ml_extension.util.helper import move_axis, flatten_dict
+from agentMET4FOF_ml_extension.baetorch.baetorch.util.minmax import MultiMinMaxScaler
 
 import matplotlib.pyplot as plt
 import matplotlib
 
 matplotlib.use('Agg')
+
+dmm_folder = "bae_data_models"
 
 def moving_average(dt, window_size=100, mode="mean"):
     pd_temp = pd.DataFrame(dt)
@@ -486,6 +488,7 @@ def form_central_bae(agentNetwork, bae_params):
     """
     bae_samples = bae_params["bae_samples"]
     cbae_agent = agentNetwork.add_agent(name="Central_BAE_Agent" if bae_samples > 1 else "Central_AE_Agent", agentType=CBAE_Agent,
+                                        dmm_folder=dmm_folder,
                                         **bae_params
                                         )
 
@@ -514,6 +517,7 @@ def form_coalition_bae(agentNetwork, bae_params, total_sensors):
         conv_architecture[0] = 1
         bae_params.update({"conv_architecture": conv_architecture})
         cbae_agent = agentNetwork.add_agent(name="Coalition_BAE_Agent"+str(sensor_i+1), agentType=CBAE_Agent,
+                                            dmm_folder=dmm_folder
                                             **bae_params
                                             )
 
