@@ -13,7 +13,7 @@ Investigated datasets are PRONOSTIA and ZEMA for condition monitoring.
 
 ## Code descriptions
 
-`unsupervised_zema_emc_bae_v5.py` : Main execution of agent network with customisable parameters. This produces raw csv results to be analysed.
+`main_agent_network.py` : Main execution of agent network with customisable parameters. This produces raw csv results to be analysed.
 
 `publication_cd_diagram.py` : Produces critical difference diagrams and record the aggregated table of results in csv. 
 
