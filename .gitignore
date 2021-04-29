@@ -1,0 +1,8 @@
+.idea
+*.h5
+*.p
+*.pyc
+*.csv
+*.png
+*.zip
+*.xlsx
