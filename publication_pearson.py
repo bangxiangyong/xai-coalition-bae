@@ -9,12 +9,12 @@ import numpy as np
 import pandas as pd
 import matplotlib
 
+from analyse_result_v3 import load_bae_results
+
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FormatStrFormatter
 
-from agentMET4FOF_ml_extension.advanced_examples.condition_monitoring.analyse_result_v3 import prepare_cd_diagram, \
-    load_bae_results
 
 matplotlib.rcParams['font.family'] = 'sans-serif'
 matplotlib.rcParams['font.sans-serif'] = 'Arial'

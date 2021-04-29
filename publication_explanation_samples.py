@@ -1,10 +1,9 @@
 import dill
 import matplotlib
-# matplotlib.use('agg')
 import matplotlib.pyplot as plt
 import numpy as np
 
-data_dict = dill.load(open("publication/"+"sample_zema3_data.p","rb"))
+data_dict = dill.load(open("MLEXP-Explainability/"+"sample_zema3_data.p","rb"))
 e_nll = data_dict["mean"][:,:-2]
 
 labels = ['Microphone', 'Vibration plain bearing',
@@ -43,4 +42,3 @@ ax2.set_title("(b)",fontsize=title_size)
 plt.legend(labels, fontsize=legend_size)
 
 fig.tight_layout()
-# fig.savefig("publication/"+"example-sensor-attribution.png",dpi=500)

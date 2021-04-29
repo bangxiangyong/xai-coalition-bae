@@ -10,12 +10,10 @@ import numpy as np
 import pandas as pd
 import matplotlib
 
+from analyse_result_v3 import prepare_cd_diagram, load_bae_results
+
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
-
-from agentMET4FOF_ml_extension.advanced_examples.condition_monitoring.analyse_result_v3 import prepare_cd_diagram, \
-    load_bae_results
-
 matplotlib.rcParams['font.family'] = 'sans-serif'
 matplotlib.rcParams['font.sans-serif'] = 'Arial'
 
@@ -482,6 +480,9 @@ pd.set_option('display.max_rows', 100)
 main_filename = "MLEXP-Explainability/unsupervised-BAE.p"
 publication_folder = "publication/"
 dpi = 500
+
+if not os.path.exists(publication_folder):
+    os.mkdir(publication_folder)
 
 #======PLOT CD DIAGRAMS=====
 for perf_key in ["gmean-sser","gmean-sdc","pearson","mcc"]:

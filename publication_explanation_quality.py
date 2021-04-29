@@ -1,12 +1,12 @@
 import dill
 from scipy.stats import spearmanr
 import numpy as np
-from agentMET4FOF_ml_extension.advanced_examples.condition_monitoring.analyse_result_v3 import load_bae_results
 import pandas as pd
 import matplotlib
+from analyse_result_v3 import load_bae_results
+
 matplotlib.use('agg')
 import matplotlib.pyplot as plt
-
 
 pd.set_option('display.max_columns', None)
 pd.set_option('display.expand_frame_repr', False)
@@ -126,17 +126,6 @@ print("HIGH SDC HIGH SSER:")
 print(high_sdc_high_sser)
 
 # load dill and plot
-# encodes = [df["encode"].iloc[0] for df in [low_sdc_low_sser,
-#                                            high_sdc_low_sser,
-#                                            low_sdc_high_sser,
-#                                            high_sdc_high_sser
-#                                            ]]
-
-# encodes = [low_sdc_low_sser["encode"].iloc[0],
-#            high_sdc_low_sser["encode"].iloc[1],
-#            low_sdc_high_sser["encode"].iloc[9],
-#            high_sdc_high_sser["encode"].iloc[-5]]
-
 encodes =["67e2fcca539d39f97498e5d40848827986e81.p",
 "0064903791dda4e7e5c719667f38a4c9d60a.p",
 "0a5c2f1115a14f4e7a37569a63e836974c5fef.p",
@@ -152,7 +141,6 @@ label_size ="small"
 title_size ="medium"
 figsize = (5,4)
 ml_exp_folder = "MLEXP-Explainability/"
-# traces_dict = dill.load(open(ml_exp_folder+"1dc9725f77339928a04c2ea601a79a4ff0d5f.p","rb"))
 
 fig, ((ax1,ax2),(ax3,ax4)) = plt.subplots(2,2, figsize=figsize)
 for i, (encode, ax, label) in enumerate(zip(encodes, [ax1,ax2,ax3,ax4], labels)):
@@ -185,10 +173,3 @@ ax2.legend([plot_drift,plot_nondrift],[r"$s^{drift}$",r"$s^{\bot{drift}}$"],
 
 fig.tight_layout()
 fig.savefig("publication/"+"explanation-quality.png",dpi=500)
-
-# ["67e2fcca539d39f97498e5d40848827986e81.p",
-#
-# "0a5c2f1115a14f4e7a37569a63e836974c5fef.p",
-# "0064903791dda4e7e5c719667f38a4c9d60a.p"
-#  ]
-

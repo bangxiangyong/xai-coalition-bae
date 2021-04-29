@@ -1,4 +1,5 @@
-from agentMET4FOF_ml_extension.advanced_examples.condition_monitoring.analyse_result_v3 import load_bae_results
+from analyse_result_v3 import load_bae_results
+
 import pandas as pd
 
 
