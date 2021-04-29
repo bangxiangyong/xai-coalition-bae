@@ -6,6 +6,11 @@ Investigated datasets are PRONOSTIA and ZEMA for condition monitoring.
 
 ## Contributions
 
+- Formulation of two sensor attribution methods for BAE based on mean and epistemic uncertainty of negative log-likelihood estimate.
+- Development of Coalitional BAE.
+- Quantitative evaluation metrics for explainable HI based on covariate shift of sensors.
+- Finding of misleading explanations due to correlation in outputs.
+
 ## Code descriptions
 
 `unsupervised_zema_emc_bae_v5.py` : Main execution of agent network with customisable parameters. This produces raw csv results to be analysed.
@@ -24,6 +29,20 @@ Investigated datasets are PRONOSTIA and ZEMA for condition monitoring.
 
 ## Figures
 
+### Examples of Sensor Attribution Scores
+(a) Equipment health indicator, (b) Sensor attribution scores
+![example-sensor](./figures/example-sensor-attribution.png)
 
+### Correlation between shifting and non-shifting sensors
+Centralised BAE 
+![Centralised-BAE-Sample](./figures/zema-bae-central-sample-8ea85cad5702975aaed0a3cc1112076121d83c.png)
 
+Coalitional BAE 
+![Coalitional-BAE-Sample](./figures/zema-bae-coalition-sample-a3ce2c815decfed70ad14f74666c82c1de7.png)
 
+### Agent Network configuration
+Centralised BAE 
+![central-bae](./figures/crop_central.png)
+
+Coalitional BAE 
+![coalition-bae](./figures/crop_coalition.png)
