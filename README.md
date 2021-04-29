@@ -10,7 +10,7 @@ Python code for replicating the experiments and figures in the paper. Core depen
 
 `publication_csv_latex.py`: Converts csv results from `publication_cd_diagram.py` into LATEX formatted content for tables.
 
-`publication_explanation_quality.py` : Produces figure of examples for low (high) $G_{SDC}$ and $G_{SSER}$.
+`publication_explanation_quality.py` : Produces figure of examples for low (high) <img src="https://render.githubusercontent.com/render/math?math=G_{SDC}"> and <img src="https://render.githubusercontent.com/render/math?math=G_{SSER}">.
 
 `publication_explanation_samples.py`: Samples of explanations comparing Centralised vs Coalition BAEs.
 
