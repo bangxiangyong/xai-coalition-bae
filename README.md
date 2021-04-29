@@ -2,6 +2,10 @@
 
 Python code for replicating the experiments and figures in the paper. Core dependencies are `agentMET4FOF` and `baetorch` for the agent-based system and Bayesian Autoencoder implementations. 
 
+Investigated datasets are PRONOSTIA and ZEMA for condition monitoring.
+
+## Contributions
+
 ## Code descriptions
 
 `unsupervised_zema_emc_bae_v5.py` : Main execution of agent network with customisable parameters. This produces raw csv results to be analysed.
