@@ -3,7 +3,7 @@ from scipy.stats import spearmanr
 import numpy as np
 import pandas as pd
 import matplotlib
-from analyse_result_v3 import load_bae_results
+from analyse_result_helper import load_bae_results
 
 matplotlib.use('agg')
 import matplotlib.pyplot as plt

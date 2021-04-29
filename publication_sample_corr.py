@@ -1,4 +1,4 @@
-from analyse_result_v3 import load_bae_results
+from analyse_result_helper import load_bae_results
 
 import pandas as pd
 
